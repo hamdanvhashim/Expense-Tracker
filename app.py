@@ -58,12 +58,12 @@ THEMES = {
     "dark": dict(
         bg1="#0e1020", bg2="#181b33", card="#1c2040", text="#eceeff", muted="#9ba1c9",
         border="rgba(255,255,255,0.09)", accent="#8b7bff", accent2="#ff7eb3",
-        input="#262b55", shadow="0 8px 30px rgba(0,0,0,0.35)", grid="rgba(255,255,255,0.08)",
+        input="#262b55", shadow="0 8px 30px rgba(0,0,0,0.35)", grid="rgba(255,255,255,0.08)", scheme="dark",
     ),
     "light": dict(
         bg1="#faf8ff", bg2="#e8edff", card="#ffffff", text="#1f2340", muted="#6b7090",
         border="rgba(31,35,64,0.09)", accent="#6c5ce7", accent2="#fd79a8",
-        input="#f1efff", shadow="0 8px 30px rgba(108,92,231,0.13)", grid="rgba(31,35,64,0.08)",
+        input="#f1efff", shadow="0 8px 30px rgba(108,92,231,0.13)", grid="rgba(31,35,64,0.08)", scheme="light",
     ),
 }
 
@@ -71,7 +71,8 @@ CSS_TEMPLATE = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 .stApp, .stApp button, .stApp input, .stApp textarea { font-family: 'Poppins', sans-serif; }
-.stApp { background: linear-gradient(135deg, __BG1__ 0%, __BG2__ 100%); color: __TEXT__; }
+.stApp :where(p, span, label, li, small, strong, em, summary, h1, h2, h3, h4, h5, h6, td, th) { color: __TEXT__; }
+.stApp { background: linear-gradient(135deg, __BG1__ 0%, __BG2__ 100%); color: __TEXT__; color-scheme: __SCHEME__; }
 [data-testid="stHeader"] { background: transparent; }
 [data-testid="stSidebar"] { background: __CARD__; border-right: 1px solid __BORDER__; }
 .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp p, .stApp label, .stApp li,
@@ -110,6 +111,14 @@ ul[role="listbox"] li, div[data-baseweb="calendar"] * { color: __TEXT__ !importa
 .pill { display: inline-block; padding: .15rem .7rem; border-radius: 999px; background: __INPUT__; font-size: .8rem; white-space: nowrap; }
 .amt { font-weight: 600; text-align: right; white-space: nowrap; }
 .table-wrap td.inc { color: #00b894; }
+[data-testid="stToolbar"], [data-testid="stToolbar"] *, [data-testid="stSidebarCollapseButton"] *, [data-testid="stSidebarCollapsedControl"] * { color: __TEXT__ !important; }
+[data-testid="stAlert"] { background: __INPUT__; border-radius: 14px; border: 1px solid __BORDER__; }
+[data-testid="stAlert"] * { color: __TEXT__ !important; }
+.stApp input::placeholder, .stApp textarea::placeholder { color: __MUTED__ !important; opacity: 1; }
+ul[role="listbox"] li:hover, ul[role="listbox"] li[aria-selected="true"] { background: __INPUT__ !important; }
+div[data-baseweb="calendar"] div, div[data-baseweb="calendar"] button { background-color: __CARD__ !important; }
+div[data-baseweb="calendar"] [aria-selected="true"], div[data-baseweb="calendar"] [aria-selected="true"] * { background-color: __ACCENT__ !important; color: #ffffff !important; }
+.stButton > button *, [data-testid="stFormSubmitButton"] > button *, .stDownloadButton > button * { color: #ffffff !important; }
 </style>
 """
 
