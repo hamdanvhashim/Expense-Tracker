@@ -1,0 +1,4 @@
+expenses.csv
+.streamlit/secrets.toml
+.venv/
+__pycache__/
